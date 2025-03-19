@@ -20,7 +20,7 @@ class Projet extends Model
         return $this->belongsTo(ChefProjet::class , 'id_chef_projets');
     }
 
-    public function equipes() {
+    public function teams() {
         return $this->hasMany(Equipe::class,'id_projets' );
     }
 
