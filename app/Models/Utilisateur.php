@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
 
 class Utilisateur extends Model
 {
-    use HasFactory;
+    use HasFactory, HasRoles;
     protected $fillable = ['nom', 'email', 'motdepasse', 'role','id_equipes'];
 
    
@@ -28,6 +29,6 @@ class Utilisateur extends Model
     public function team() {
         return $this->belongsTo(Equipe::class, 'id_equipes');
     }
-
+     
     
 }
