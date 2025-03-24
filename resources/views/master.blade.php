@@ -1,7 +1,6 @@
 
-         <!-- header -->
-          @include('header')
-        <!-- Sidebar -->
+
+  
        
         @include('sidebar')
         <!-- Main Content -->

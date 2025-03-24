@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('email')->unique();
-            $table->string('motdepasse');
-            $table->enum('role', ['admin', 'chef_projet', 'client', 'membre','controleur']);
+            $table->string('role'); // 'admin', 'chef_projet', 'client', 'controleur'
+            $table->string('mot_de_passe')->nullable(); // For regular password login
+            $table->string('code_connexion')->nullable(); 
             $table->foreignId('id_equipes')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

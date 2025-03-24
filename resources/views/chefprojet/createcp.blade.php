@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,11 +7,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/src/styles.css">
 </head>
-<body>
-    <div class="flex h-screen bg-gray-50"><div class="w-64 bg-blue-900 text-white p-6">
+<style>
+    sup{
+        color: red;
+    }
+</style>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen bg-gray-50">
+
+        <!-- Sidebar -->
+        <div class="w-64 bg-blue-900 text-white p-6">
             <div class="flex items-center gap-3 mb-8">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building-2"><path d="M6 22V4c0-.27 0-.55.07-.82a1.988 1.988 0 0 1 1.11-1.11C7.45 2 7.73 2 8 2h8c.27 0 .55 0 .82.07a1.988 1.988 0 0 1 1.11 1.11C18 3.45 18 3.73 18 4v18"/><path d="M2 14v6c0 .27 0 .55.07.82a1.988 1.988 0 0 0 1.11 1.11C3.45 22 3.73 22 4 22h16"/><path d="M14 8h.01"/><path d="M14 12h.01"/><path d="M14 16h.01"/><path d="M10 8h.01"/><path d="M10 12h.01"/><path d="M10 16h.01"/></svg>
-                <h1 class="text-xl font-bold">AVESIG</h1>
+                <h1 class="text-xl font-bold">7ELITE </h1>
             </div>
             
             <nav class="space-y-2">
@@ -39,10 +47,7 @@
                     <span>Rapports</span>
                 </button>
                 
-                <button class="flex items-center gap-3 w-full p-3 rounded-lg hover:bg-blue-800 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a6 6 0 0 1 6-6h0"/><path d="M14 6h0a6 6 0 0 1 6 6v3"/></svg>
-                    <span><a href="dashboard.blade.php">Chef de Projet</a></span>
-                </button>
+                
                 <button class="flex items-center gap-3 w-full p-3 rounded-lg hover:bg-blue-800 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
                     <span>Notifications</span>
@@ -58,3 +63,43 @@
                 <span>Déconnexion</span>
             </button>
         </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8">
+            <h2 class="text-2xl font-semibold mb-6">Créer votre Chef de Projet</h2>
+
+            <!-- Formulaire -->
+            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <form>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="nom">Nom<sup>*</sup> </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nom" type="text" placeholder="Nom du chef de projet">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="prenom">Email<sup>*</sup> </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="prenom" type="email" placeholder="Email du chef de projet">
+                    </div>
+                    <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="role">
+        Role<sup>*</sup>
+    </label>
+    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="role" name="role" required>
+        <option value="">-- Sélectionnez un rôle --</option>
+        <option value="client">Client</option>
+        <option value="chef_projet">Chef de Projet</option>
+    </select>
+</div>
+
+                    <div class="flex items-center justify-between">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            Créer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
