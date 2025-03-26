@@ -9,6 +9,7 @@ class Admin extends Model
 {
     use HasFactory;
     protected $fillable = ['nom','email','motdepasse'];
+    protected $hidden = ['motdepasse'];
     
     public function Chefprojet(){
         return $this->hasMany(ChefProjet::class, 'id_admins');
@@ -18,3 +19,4 @@ class Admin extends Model
         return $this->hasMany(FicheDeControle::class, 'id_admins');
     }
 }
+

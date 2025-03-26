@@ -9,6 +9,7 @@ class ChefProjet extends Model
 {
     use HasFactory;
     protected $fillable = ['nom', 'email', 'motdepasse','id_admins'];
+    protected $hidden = ['motdepasse'];
     
     public function admin() {
         return $this->belongsTo(Admin::class , 'id_admins');
@@ -24,4 +25,5 @@ class ChefProjet extends Model
         return $this->hasMany(Equipe::class, 'id_chef_projets');
     }
 }
+
 

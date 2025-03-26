@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ChefProjetController; 
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('master');
 });
 // Authentication
 Route::get('/dashboard', function () {
@@ -27,13 +28,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'Roleadmin'])->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-    
+ 
     // Chef de projet management
-    Route::get('/chefs-projets', [AdminController::class, 'listChefsProjets'])->name('chefs_projets');
-    Route::get('/chefs-projets/create', [AdminController::class, 'createChefProjetForm'])->name('create_chef_projet');
-    Route::post('/chefs-projets', [AdminController::class, 'storeChefProjet'])->name('store_chef_projet');
-});
+
+
+
+
+
+    Route::get('/chef-projets/create', [ChefProjetController::class, 'create'])->name('chef-projets.create');
+
+
+   Route::post('/chef-projets', [ChefProjetController::class, 'store'])->name('chef-projets.store');
+    
 
 require __DIR__.'/auth.php';
