@@ -24,10 +24,6 @@ return [
     | their respective settings. Several examples have been configured for
     | you and you are free to add your own as your application requires.
     |
-    | Laravel supports a variety of mail "transport" drivers to be used while
-    | sending an e-mail. You will specify which one you are using for your
-    | mailers below. You are free to add additional mailers as required.
-    |
     | Supported: "smtp", "sendmail", "mailgun", "ses",
     |            "postmark", "log", "array", "failover"
     |
@@ -36,11 +32,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'host' => env('MAIL_HOST', 'smtp.gmail.com'), // Gmail SMTP host
+            'port' => env('MAIL_PORT', 587), // Gmail SMTP port
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'), // Encryption method
+            'username' => env('MAIL_USERNAME'), // Gmail email address
+            'password' => env('MAIL_PASSWORD'), // App-specific password
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
@@ -51,16 +47,10 @@ return [
 
         'mailgun' => [
             'transport' => 'mailgun',
-            // 'client' => [
-            //     'timeout' => 5,
-            // ],
         ],
 
         'postmark' => [
             'transport' => 'postmark',
-            // 'client' => [
-            //     'timeout' => 5,
-            // ],
         ],
 
         'sendmail' => [
@@ -98,8 +88,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'ernestobidoss@gmail.com'), // Default sender email
+        'name' => env('MAIL_FROM_NAME', '7ELITE'), // Default sender name
     ],
 
     /*

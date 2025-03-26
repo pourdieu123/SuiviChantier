@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+ 
 Route::get('/', function () {
     return view('master');
 });
@@ -30,15 +30,30 @@ Route::middleware('auth')->group(function () {
 });
  
     // Chef de projet management
+    
+    Route::get('/test-email', function () {
+        try {
+            Mail::raw('Ceci est un email de test de 7ELITE', function ($message) {
+                $message->to('destinataire@gmail.com') // Remplace par un email de test
+                        ->subject('Test Email Laravel');
+            });
+    
+            return 'Email envoyé avec succès !';
+        } catch (\Exception $e) {
+            return 'Erreur : ' . $e->getMessage();
+        }
+    });
+    
 
 
-
-
-
-    Route::get('/chef-projets/create', [ChefProjetController::class, 'create'])->name('chef-projets.create');
-
-
-   Route::post('/chef-projets', [ChefProjetController::class, 'store'])->name('chef-projets.store');
+    Route::get('/chef-projets/create', function () {
+        return view('chef-projets.create'); // Assurez-vous que cette vue existe
+    })->name('chef-projets.create');
+    
+    Route::middleware(['web'])->group(function () {
+        Route::post('/chef-projets', [ChefProjetController::class, 'store'])->name('chef-projets.store');
+    });
+    
     
 
 require __DIR__.'/auth.php';

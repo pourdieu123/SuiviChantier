@@ -67,10 +67,23 @@
         <!-- Main Content -->
         <div class="flex-1 p-8">
             <h2 class="text-2xl font-semibold mb-6">Créer votre Chef de Projet</h2>
-        
+            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+         
+                @if (session('success'))
+                <div class="bg-green-500 text-white p-4 rounded mb-4">
+                    {{ session('success') }}
+                </div>
+            @endif
+            
+            @if (session('error'))
+                <div class="bg-red-500 text-white p-4 rounded mb-4">
+                    {{ session('error') }}
+                </div>
+            @endif
+            
             <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <form  action="{{ route('chef-projets.store') }}" method="POST">
-                    @csrf
+                   @csrf
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="nom">Nom<sup>*</sup> </label>
                         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nom" type="text" placeholder="Nom du chef de projet" name="nom" required>
@@ -87,8 +100,10 @@
                         <a href="/listecp" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Voir la liste des Chefs de Projet</a>
                     </div>
                 </form>
+               
             </div>
         </div>
+       
 
     </body>
   </html>
