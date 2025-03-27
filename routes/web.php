@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
  
 Route::get('/', function () {
-    return view('master');
+    return view('chef-projets.board');
 });
 // Authentication
 Route::get('/dashboard', function () {
@@ -30,6 +30,12 @@ Route::middleware('auth')->group(function () {
 });
  
     // Chef de projet management
+   
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('chef-projets', ChefProjetController::class);
+});
+
     
     Route::get('/test-email', function () {
         try {

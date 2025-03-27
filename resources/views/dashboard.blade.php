@@ -1,10 +1,4 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-    @include('sidebar');
+@include('sidebar')
 <!-- Main Content -->
 
 <div class="flex-1 overflow-auto">
@@ -47,11 +41,13 @@
             <div class="bg-white rounded-lg p-6 shadow-sm">
                 <div class="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a6 6 0 0 1 6-6h0"/><path d="M14 6h0a6 6 0 0 1 6 6v3"/></svg>
-                </div>
-                <h3 class="text-gray-500 text-sm">Chefs de Projet</h3>
-                <p class="text-2xl font-bold text-gray-800">6</p>
+              
             </div>
-
+            
+            <h3 class="text-gray-500 text-sm">Chefs de Projet</h3>
+            <p class="text-2xl font-bold text-gray-800">6</p>
+        
+        </div>
             <div class="bg-white rounded-lg p-6 shadow-sm">
                 <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -133,20 +129,4 @@
 
 
 </body>
-    
-
 </html>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout
-
-  
-   

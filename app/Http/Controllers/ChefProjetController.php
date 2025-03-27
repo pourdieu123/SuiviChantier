@@ -48,5 +48,28 @@ class ChefProjetController extends Controller
             return back()->with('error', 'Une erreur est survenue lors de la création du Chef de Projet. Veuillez réessayer.');
         }
     }
+
+
+     public function liste()
+    {
+        $chefsDeProjets = ChefProjet::all(); // Récupère tous les chefs de projet
+        return view('chef-projets.liste', compact('chefsDeProjets'));
+    }
+
+   
+    public function create()
+    {
+        return view('chef-projets.create');
+    }
+
+    public function destroy($id)
+    {
+        $chefDeProjet = ChefProjet::findOrFail($id);
+        $chefDeProjet->delete();
+
+        return redirect()->route('chef-projets.liste')->with('success', 'Chef de projet supprimé avec succès.');
+    }
+
+
     
 }
