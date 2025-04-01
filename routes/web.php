@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChefProjetController; 
+use App\Http\Controllers\Auth\ChefProjetLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
  
 Route::get('/', function () {
-    return view('chef-projets.board');
+    return view('dashboard');
 });
-// Authentication
+// Authentication Admins
+Route::post('/', [ChefProjetController::class, 'adminboard'])->name('dashboard');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -28,6 +30,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+// Authentication Chef Projet
+
+Route::prefix('chef-projet')->group(function () {
+    Route::get('login', [ChefProjetLoginController::class, 'showLoginForm'])->name('chef-projet.login');
+    Route::post('login', [ChefProjetLoginController::class, 'login']);
+    Route::post('logout', [ChefProjetLoginController::class, 'logout'])->name('chef-projet.logout');
+});
+
  
     // Chef de projet management
    
@@ -49,17 +59,34 @@ Route::middleware(['auth'])->group(function () {
             return 'Erreur : ' . $e->getMessage();
         }
     });
-    
 
+// Routes pour les Chefs de Projet (protection par authentification)
+Route::middleware(['auth'])->group(function () {
 
-    Route::get('/chef-projets/create', function () {
-        return view('chef-projets.create'); // Assurez-vous que cette vue existe
-    })->name('chef-projets.create');
-    
-    Route::middleware(['web'])->group(function () {
-        Route::post('/chef-projets', [ChefProjetController::class, 'store'])->name('chef-projets.store');
-    });
-    
-    
+    Route::get('/chef-projets/create', [ChefProjetController::class, 'create'])->name('chef-projets.create');
+    Route::get('/chef-projets', [ChefProjetController::class, 'liste'])->name('chef-projets.liste');
+
+    // Route pour enregistrer un nouveau Chef de projet
+    Route::post('/chef-projets', [ChefProjetController::class, 'store'])->name('chef-projets.store');
+
+     // Route pour supprimer un Chef de projet
+    Route::delete('/chef-projets/{id}', [ChefProjetController::class, 'destroy'])->name('chef-projets.destroy');
+});
+
+// Route pour la connexion (Chef de projet)
+Route::post('/chef-projet/login', [ChefProjetLoginController::class, 'login'])->name('chef-projet.login');
+
+// Route pour afficher la page de connexion du Chef de projet
+Route::get('/chef-projet/login', function () {
+    return view('auth.chef_projet_login'); // Vue de connexion à créer
+})->name('chef-projet.login.form');
+
+// Route protégée par authentification pour accéder au tableau de bord du Chef de Projet
+// Route pour le tableau de bord du chef de projet
+
+Route::get('/chef-projet/board', function () {
+    return view('chef-projets.board');
+})->name('chef-projets.board');
+
 
 require __DIR__.'/auth.php';

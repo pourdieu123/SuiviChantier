@@ -12,11 +12,11 @@
 </head>
 <body>
     
-    <p>Bonjour {{  $chefProjet->nom}},</p>
+    <p>Bonjour, Mr {{  $chefProjet->nom}},</p>
     <p>Vous avez été ajouté(e) comme Chef de Projet dans notre système. Voici vos identifiants de connexion :</p>
     <ul>
-        <li>Email : {{ $chefProjet->$email }}</li>
-        <li>Mot de passe : {{ $password }}</li>
+        <ol>Email : {{ $email }}</ol>
+        <ol>Mot de passe : {{ $password }}</ol>
     </ul>
     <p>Veuillez vous connecter et modifier votre mot de passe dès que possible.</p>
     <p>Cordialement,</p>

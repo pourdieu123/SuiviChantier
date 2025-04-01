@@ -9,7 +9,14 @@ use Illuminate\Support\Facades\Mail;
 
 class ChefProjetController extends Controller
 {
- 
+   
+
+   public function show($id)
+    {
+        $chefProjet = ChefProjet::findOrFail($id);
+        return view('chef-projets.show', compact('chefProjet'));
+    }
+
     public function store(Request $request)
     {
         try {
